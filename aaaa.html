@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine?</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: pink;
+            flex-direction: column;
+            font-family: 'Patrick Hand', cursive;
+            text-align: center;
+        }
+        h1 {
+            color: red;
+        }
+        .hearts {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 50px;
+            animation: fall 5s infinite linear;
+        }
+        @keyframes fall {
+            from { transform: translateY(-10vh); opacity: 1; }
+            to { transform: translateY(100vh); opacity: 0; }
+        }
+        .btn {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 20px;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+        .btn:hover {
+            background-color: darkred;
+        }
+        @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+    </style>
+</head>
+<body>
+    <img src="https://i.pinimg.com/originals/b6/e1/9f/b6e19f13e616fba2eebea42424f2bbe7.gif" alt="Dudu the brown bear" width="200">
+    <h1>Will you be my Valentine? ❤️<br>minii hairtaii gunjee</h1>
+    <button class="btn" onclick="popHearts()">Yes!</button>
+    <script>
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('hearts');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 5000);
+        }
+
+        function popHearts() {
+            // Trigger heart animation on "Yes!" button press
+            for (let i = 0; i < 10; i++) {
+                createHeart();
+            }
+        }
+        
+        // Optional: Continually fall hearts for added effect
+        setInterval(createHeart, 500);
+    </script>
+</body>
+</html>
